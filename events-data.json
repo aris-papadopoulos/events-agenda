@@ -1,0 +1,103 @@
+var getJSON = {
+    "events": [
+        {
+            "id":"1",
+            "title":"40th Marathon of Athens starting from Kalimarmano",
+            "type":"sports",
+            "location":"Athens",
+            "img_src":"./images/marathon.jpg",
+            "starting":"2018-3-25",
+            "ending":"2018-3-26"
+        },
+        {
+            "id":"2",
+            "title":"Dine Athens Restaurant Week",
+            "type":"gastronomy",
+            "location":"Athens",
+            "img_src":"./images/gastronomy.jpg",
+            "starting":"2018-5-13",
+            "ending":"2018-5-14"
+        },
+        {
+            "id":"3",
+            "title":"1st Short Film Festival of the Municipality of Peristeri",
+            "type":"arts",
+            "location":"Athens",
+            "img_src":"./images/arts.jpg",
+            "starting":"2018-7-25",
+            "ending":"2018-7-26"
+        },
+        {
+            "id":"4",
+            "title":"The Theatre Of Disappearance - Adrian Villar Rojas",
+            "type":"arts",
+            "location":"Athens",
+            "img_src":"./images/arts.jpg",
+            "starting":"2018-2-27",
+            "ending":"2018-4-19"
+        },
+        {
+            "id":"5",
+            "title":"The Greek Song is still Alive II - Oloi mazi boroume & Dionisis Savvopoulos",
+            "type":"concert",
+            "location":"Santorini",
+            "img_src":"./images/concert.jpg",
+            "starting":"2018-3-20",
+            "ending":"2018-3-21"
+        },
+        {
+            "id":"6",
+            "title":"Free tours at the National Archaeological Museum",
+            "type":"history",
+            "location":"Athens",
+            "img_src":"./images/concert.jpg",
+            "starting":"2017-11-25",
+            "ending":"2017-11-26"
+        },
+        {
+            "id":"7",
+            "title":"EJEKT FESTIVAL",
+            "type":"concert",
+            "location":"Athens",
+            "img_src":"./images/concert.jpg",
+            "starting":"2019-1-5",
+            "ending":"2019-1-26"
+        },
+        {
+            "id":"8",
+            "title":"Sleepin Pillow at Fuzz Live Music Club",
+            "type":"concert",
+            "location":"Athens",
+            "img_src":"./images/concert.jpg",
+            "starting":"2018-2-25",
+            "ending":"2018-2-26"
+        },
+        {
+            "id":"9",
+            "title":"Comicdom Con Athens 2016 in April",
+            "type":"arts",
+            "location":"Athens",
+            "img_src":"./images/concert.jpg",
+            "starting":"2018-4-11",
+            "ending":"2018-4-12"
+        },
+        {
+            "id":"10",
+            "title":"Christmas festival",
+            "type":"tradition",
+            "location":"Salonika",
+            "img_src":"./images/concert.jpg",
+            "starting":"2018-12-24",
+            "ending":"2019-1-4"
+        },
+        {
+            "id":"10",
+            "title":"Summer Holiday",
+            "type":"excursion",
+            "location":"Cyclades",
+            "img_src":"./images/concert.jpg",
+            "starting":"2018-7-24",
+            "ending":"2018-8-12"
+        },
+      ]
+    };
