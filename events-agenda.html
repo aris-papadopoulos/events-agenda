@@ -13,12 +13,25 @@
       <div class="container">
         <section>
           <div class="row">
-            <div class="agenda col s12">
-              <div id ="app" class="month-wrapper">
+            <div id="agenda" class="col s12">
+
+              <div class="dropdown-wrapper hide-on-med-and-up center">
+              
+                <a class='dropdown-button btn' href='#' data-activates='agenda-dropdown'>Select Month</a>
+
+                <ul id='agenda-dropdown' class='dropdown-content'>
+                </ul>
               </div>
+
+              <div id ="app" class="month-wrapper">
+                <!-- Loads content through JS -->
+              </div>
+
               <span class="overlay"></span>
-              <a href="#" class="agenda-btn button button--rounded btn-left inactive"><</a>
-              <a href="#" class="agenda-btn button button--rounded btn-right">></a>
+              <div class="hide-on-small-only">
+                  <a href="#" class="agenda-btn button button--rounded btn-left inactive"><</a>
+                  <a href="#" class="agenda-btn button button--rounded btn-right">></a>
+              </div>
             </div>
           </div>
         </section>
