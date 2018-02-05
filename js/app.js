@@ -1,95 +1,109 @@
 var d = new Date();
-    var m = d.getMonth();
-    var mm = m;
-    var y = d.getFullYear();
-    var yy = y;
-    var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    var monthsShort = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+var m = d.getMonth();
+var mm = m;
+var y = d.getFullYear();
+var yy = y;
+var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+var monthsShort = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-    var months_array = [];
-    months_array.push(months[m] + ' ' + y + ' ' + (m+1) + ' ' + monthsShort[m]); // Passes 1) Month as a text, 2) Year, 3) Month as a readable number (+1) 
-    // console.log(months_array, months_array, mm);
+var months_array = [];
+months_array.push(months[m] + ' ' + y + ' ' + (m+1) + ' ' + monthsShort[m]); // Passes 1) Month as a text, 2) Year, 3) Month as a readable number (+1) 
+// console.log(months_array, months_array, mm);
 
-    // Get 5 previous months
-    for (i=0; i<5; i++) { 
-        m--;
-        if(m < 0 ) {
-            y--;
-            m = 11;
-        }
-        months_array.unshift(months[m] + ' ' + y + ' ' + (m+1) + ' ' + monthsShort[m]); // Passes 1) Month as a text, 2) Year, 3) Month as a readable number (+1) 
-        console.log(months_array);
+// Get 5 previous months
+for (i=0; i<5; i++) { 
+    m--;
+    if(m < 0 ) {
+        y--;
+        m = 11;
     }
+    months_array.unshift(months[m] + ' ' + y + ' ' + (m+1) + ' ' + monthsShort[m]); // Passes 1) Month as a text, 2) Year, 3) Month as a readable number (+1) 
+    console.log(months_array);
+}
 
-    // Get 11 next months
-    for (i=0; i<11; i++) { 
-        mm++;
-        if(mm > 11 ) {
-            yy++;
-            mm = 0;
-        }
-        months_array.push(months[mm] + ' ' + yy + ' ' + (mm+1) + ' ' + monthsShort[mm]);
-        console.log(months_array);
+// Get 11 next months
+for (i=0; i<11; i++) { 
+    mm++;
+    if(mm > 11 ) {
+        yy++;
+        mm = 0;
     }
+    months_array.push(months[mm] + ' ' + yy + ' ' + (mm+1) + ' ' + monthsShort[mm]);
+    console.log(months_array);
+}
 
-    months_array.forEach(function(el, index) {
-        console.log('element', el);
-    var split_el = el.split(" ");
-    var dateText = "<span class='fullMonth'>" + split_el[0] + "</span>" + "<span class='shortMonth'>" + split_el[3] + "</span>" + "<br>" + split_el[1];
+months_array.forEach(function(el, index) {
+    console.log('element', el);
+var split_el = el.split(" ");
+var dateText = "<span class='fullMonth'>" + split_el[0] + "</span>" + "<span class='shortMonth'>" + split_el[3] + "</span>" + "<br>" + split_el[1];
 
-    // console.log('foreach', dateText, index);
-    if (index < 6) {
-        document.getElementById('app').innerHTML += "<div class='month col m1 active' data-month='" + split_el[2] + "' data-year='" + split_el[1] + "'><p class='dateText'>" + dateText + "</p></div>";
-    }
-    else if (index < 12) {
-        document.getElementById('app').innerHTML += "<div class='month col m1 active second-half' data-month='" + split_el[2] + "' data-year='" + split_el[1] + "'><p class='dateText'>" + dateText + "</p></div>";
-    }
-    else {
-        document.getElementById('app').innerHTML += "<div class='month col m1' data-month='" + split_el[2] + "' data-year='" + split_el[1] + "'><p class='dateText'>" + dateText + "</p></div>";
-    }
-    // Appending HTML, with classes according to initial state.
-    });
+// console.log('foreach', dateText, index);
+if (index < 6) {
+    document.getElementById('app').innerHTML += "<div class='month col m1 active' data-month='" + split_el[2] + "' data-year='" + split_el[1] + "'><p class='dateText'>" + dateText + "</p></div>";
+}
+else if (index < 12) {
+    document.getElementById('app').innerHTML += "<div class='month col m1 active second-half' data-month='" + split_el[2] + "' data-year='" + split_el[1] + "'><p class='dateText'>" + dateText + "</p></div>";
+}
+else {
+    document.getElementById('app').innerHTML += "<div class='month col m1' data-month='" + split_el[2] + "' data-year='" + split_el[1] + "'><p class='dateText'>" + dateText + "</p></div>";
+}
+// Appending HTML, with classes according to initial state.
+});
 
+
+// Calculate agenda widths
+var agenda_w = $('.agenda').outerWidth();
+
+//var month_w = agenda_w / 12;
+// $('.month').outerWidth(month_w); // divided by 12 months, minus 2 pixels (not calculating border)
+// $('#app').outerWidth(month_w * 17);
+/* Old method: Individual month divs are calculated first, then we multiply their width by 17 (total months). 
+    This method turned out to be less effective cause browsers render divisions of pixel in a different way (read about subpixel rendering),
+    causing a loss of +-2 pixels in some cases */
+$('#app').outerWidth(agenda_w * 1.4166666); 
+/* New method: Get agenda width when page is loaded, and set the width to be 17/12=1.4166666 larger (total months divided by months shown)
+    Month wrapper width is calculated from the outer div width, in order to be able to use a fixed percentage width with CSS in the month divs,
+    thus letting the browsers render properly and in their own way the pixel divisions. */
 
 
 $('.agenda-btn').on('click', function(e) {
 
-e.preventDefault();
-$(this).addClass("inactive");
+    e.preventDefault();
+    $(this).addClass("inactive");
 
-if ($(this).hasClass('btn-right')) {
+    if ($(this).hasClass('btn-right')) {
         $('.agenda-btn.btn-left').removeClass('inactive');
         $('#app').addClass('scrolled');
         toggleActiveDivs();
         toggleSecondHalfDivs();
-}
-else {
+    }
+    else {
         $('.agenda-btn.btn-right').removeClass('inactive');
         $('#app').removeClass('scrolled');
         toggleActiveDivs();
         setTimeout(() => {
         toggleSecondHalfDivs();
-        }, 50);
+    }, 50);
 }
 
 function toggleActiveDivs() {
     $('.month').each(function(index, el) {
-    if (index < 5) {
-        $(this).toggleClass('active');
-    }
-    else if (index > 11) {
-        $(this).toggleClass('active');
-    }
+        if (index < 5) {
+            $(this).toggleClass('active');
+        }
+        else if (index > 11) {
+            $(this).toggleClass('active');
+        }
     });
 }
 function toggleSecondHalfDivs() {
     $('.month.active').each(function(index, el) {
-    if (index <= 5) {
-        $(this).removeClass('second-half');
-    }
-    else {
-        $(this).addClass('second-half');
-    }
+        if (index <= 5) {
+            $(this).removeClass('second-half');
+        }
+        else {
+            $(this).addClass('second-half');
+        }
     });
 }
 

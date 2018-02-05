@@ -668,12 +668,19 @@ body {
   font-size: 1.125rem;
   line-height: 1.5; 
 }
+section {
+  padding: 2.5rem;
+}
 .container {
-  max-width: 1200px;
+  max-width: 1280px;
   margin: 0 auto;
 }
 .agenda {
   background: url(../img/agenda-bg.jpg);
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   position: relative;
   z-index: 0; 
 }
@@ -690,10 +697,10 @@ body {
   transform: translateX(0px); 
 }
 .agenda .month-wrapper.scrolled {
-  transform: translate(-500px); 
+  transform: translate(-29.412%); 
 }
 .agenda .month-wrapper .month {
-  width: 100px;
+  width: 5.882352%; /* 1/17 of container width */
   height: 100%;
   color: #fff;
   text-transform: uppercase;
@@ -703,9 +710,9 @@ body {
   background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.67) 2%, rgba(0, 0, 0, 0.46) 98%, rgba(0, 0, 0, 0.46) 100%);
   cursor: pointer; 
 }
-  .agenda .month-wrapper .month.active:hover .dateText {
-    color: #03a9f4; 
-  }
+.agenda .month-wrapper .month.active:hover .dateText {
+  color: #03a9f4; 
+}
 .agenda .month-wrapper .month:not(:last-of-type) {
   border-right: 2px dashed;
   border-right-color: rgba(255, 255, 255, 0.35); 
@@ -714,6 +721,16 @@ body {
   padding: 10px;
   font-size: 0.75em;
   transition: color .4s; 
+}
+@media only screen and (min-width: 993px) {
+  .agenda .month-wrapper .month .shortMonth {
+    display: none; 
+  } 
+}
+@media only screen and (min-width: 601px) and (max-width: 992px) {
+  .agenda .month-wrapper .month .fullMonth {
+    display: none; 
+  } 
 }
 .agenda .month-wrapper .month .event {
   font-size: .8em;
@@ -735,8 +752,15 @@ body {
   margin-bottom: 10px; 
 }
 .agenda .month-wrapper .month .event p {
+  font-size: .8em;
   padding: 0;
   margin: 0; 
+}
+.agenda .month-wrapper .month .event p.event-title {
+  font-size: 1.1em;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 4px; 
 }
 .agenda .overlay {
   position: absolute;
@@ -746,6 +770,8 @@ body {
   right: 0;
   z-index: -1;
   background: rgba(0, 57, 123, 0.6);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  opacity: 1; 
 }
 
 .agenda-btn {
@@ -755,10 +781,10 @@ width: 50px;
 height: 50px;
 line-height: 20px;
 padding: 15px;
+text-align: center;
 background-color: #03a9f4;
 color: #fff;
-border-radius: 50%;
-text-align: center;
+border-radius: 50%; 
 }
 .agenda-btn.btn-left {
   right: calc(50% + 10px); 
