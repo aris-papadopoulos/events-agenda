@@ -55,6 +55,9 @@ a {
   color: #039be5;
   text-decoration: none;
   -webkit-tap-highlight-color: transparent; }
+.bold {
+    font-weight: 700;
+}
 
 
 /*********************
@@ -332,8 +335,7 @@ body {
 }
 #agenda .month-wrapper {
   float: none;
-  width: 1700px;
-  height: 600px;
+  height: 640px;
   overflow-x: auto;
   overflow-y: hidden;
   margin: 0 auto;
@@ -356,18 +358,15 @@ body {
   font-size: 0.75em;
   transition: color .4s; 
 }
-#agenda .month-wrapper .month .event {
+#agenda .month-wrapper .month .event, #agenda .month-wrapper .month .no-event {
   font-size: .8em;
-  width: 300px;
+  width: 290px;
   white-space: normal;
   padding: 10px;
   position: relative;
-  z-index: 3; 
+  z-index: 3;
 }
-#agenda .month-wrapper .month.show:hover .event {
-  display: block; 
-}
-#agenda .month-wrapper .month .event {
+#agenda .month-wrapper .month .event, #agenda .month-wrapper .month .no-event {
   display: none;
   background: rgba(0, 0, 32, 0.8);
   margin-bottom: 10px; 
@@ -377,11 +376,16 @@ body {
   padding: 0;
   margin: 0; 
 }
+#agenda .month-wrapper .month .event-url a {
+  margin-top: 2px;
+  display: inline-block;
+}
 #agenda .month-wrapper .month .event p.event-title {
-  font-size: 1.1em;
+  font-size: .9em;
   font-weight: 700;
   line-height: 1.2;
   margin-bottom: 4px; 
+  min-height: 30px;
 }
 #agenda .overlay {
   position: absolute;
@@ -417,7 +421,6 @@ border-radius: 50%;
   opacity: .4;
   pointer-events: none; 
 }
-
 .btn {
   text-decoration: none;
   color: #fff;
@@ -438,6 +441,26 @@ border-radius: 50%;
   vertical-align: middle;
   -webkit-tap-highlight-color: transparent;
   width: 240px;
+}
+[class^="icon--"], [class*=" icon--"] {
+  font-family: 'fontello' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+[class^="icon-"]:before, [class*=" icon-"]:before {
+    position: relative;
+    top: -4px;
+}
+#agenda .month-wrapper .month .event .icon, #agenda .month-wrapper .month .no-event .icon {
+  display: inline;
+  float: left;
+  padding-right: 4px;
+  font-size: 1.4rem;
 }
 #agenda .dropdown-wrapper {
   margin: 40px auto;
@@ -483,7 +506,21 @@ border-radius: 50%;
   text-align: center;
 }
 
+.button--rounded.button--light {
+  background-color: #fff;
+  color: #03a9f4;
+  border-color: transparent;
+  border-radius: 2em;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+}
+#agenda .month-wrapper .month .button--rounded {
+  padding: 0.25rem 0.9375rem;
+}
+
 @media only screen and (max-width: 600px) {
+  .hide-on-small-only {
+    display: none !important;
+  }
   #agenda .month-wrapper {
     width: 100% !important; 
   }
@@ -505,9 +542,17 @@ border-radius: 50%;
   #agenda .month-wrapper .month {
     display: none;
   }
+  #agenda .month-wrapper .month .month-link {
+    margin: 1rem;
+    display: flex;
+    justify-content: center;
+  }
 }
 
 @media only screen and (min-width: 601px) {
+  section {
+    padding: 2.5rem;
+  }
   .hide-on-med-and-up {
     display: none !important; 
   }
@@ -525,14 +570,17 @@ border-radius: 50%;
     border-right: 2px dashed;
     border-right-color: rgba(255, 255, 255, 0.35); 
   }
-  #agenda .month-wrapper .month.second-half .event {
+  #agenda .month-wrapper .month.second-half .event, #agenda .month-wrapper .month.second-half .month-link {
     float: right; 
   }
   #agenda .month-wrapper .month.show:hover .dateText {
     color: #03a9f4; 
   }
-  section {
-    padding: 2.5rem;
+  #agenda .month-wrapper .month .month-link {
+    display: none;
+  }
+  #agenda .month-wrapper .month.show:hover .event,  #agenda .month-wrapper .month.show:hover .no-event,  #agenda .month-wrapper .month.show:hover .month-link {
+    display: block; 
   }
 }
 

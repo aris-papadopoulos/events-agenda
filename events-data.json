@@ -53,7 +53,7 @@ var getJSON = {
         {
             "id":"6",
             "title":"Free tours at the National Archaeological Museum",
-            "type":"history",
+            "type":"culture",
             "location":"Athens",
             "url":"events/free-tours-at-the-national-archeological-museum",
             "img_src":"./images/concert.jpg",
@@ -93,7 +93,7 @@ var getJSON = {
         {
             "id":"10",
             "title":"Christmas festival",
-            "type":"tradition",
+            "type":"culture",
             "location":"Salonika",
             "url":"events/christmas-festival",
             "img_src":"./images/concert.jpg",
@@ -103,12 +103,22 @@ var getJSON = {
         {
             "id":"10",
             "title":"Summer Holiday",
-            "type":"excursion",
+            "type":"social",
             "location":"Cyclades",
             "url":"events/summer-holiday",
             "img_src":"./images/concert.jpg",
             "starting":"2018-7-24",
             "ending":"2018-8-12"
+        },
+        {
+            "id":"11",
+            "title":"Cine Doc Kids",
+            "type":"arts",
+            "location":"Athens",
+            "url":"events/cine-doc-kids",
+            "img_src":"./images/concert.jpg",
+            "starting":"2018-3-29",
+            "ending":"2018-4-25"
         },
       ]
     };

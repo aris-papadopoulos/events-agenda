@@ -129,7 +129,7 @@ $('#agenda-dropdown li').on('click', function(e) {
 
     e.preventDefault();
 
-    $('#agenda-dropdown li').removeClass('active');
+    $('#agenda-dropdown, #agenda-dropdown li').removeClass('active');
     $(this).addClass('active');
     var selectedMonth = $(this).data('month');
     var selectedYear = $(this).data('year');
@@ -139,12 +139,22 @@ $('#agenda-dropdown li').on('click', function(e) {
 
 });
 
-
+$('.dropdown-button.btn').on('click', function(){
+    $('#agenda-dropdown').toggleClass('active');
+});
     
 
 getJSON.events.forEach(function(event){
 
 // console.log('EVENT: ' + event.id + event.title + event.type + event.location + event.starting + event.ending);
+
+if (event.title.length > 60) {
+    var shortTitle = event.title.slice( 0, 60) + '...';
+    console.log('shortTitle',shortTitle);
+}
+else {
+    var shortTitle = event.title;
+}
 
 var eventStarting = event.starting.split('-');
 var eventEnding = event.ending.split('-');
@@ -171,17 +181,39 @@ while (startingMonth != endingMonth) {
 // console.log('eventMonths', eventMonths);
 // console.log('eventYears', eventYears);
 
+// Append current event in the div 
 for (i=0; i<eventMonths.length; i++) {
     // console.log('eventMonths[i]',eventMonths[i], $('.month[data-month="' + eventMonths[i] + '"]'));
     $('.month[data-month="' + eventMonths[i] + '"][data-year="' + eventYears[i] + '"]').append("\
     <div class='event'>\
-        <p class='event-title'>" + event.title + "</p>\
+        <span class='icon icon-" + event.type + " circle center'></span>\
+        <p class='event-title' title='" + event.title + "'>" + shortTitle + "</p>\
         <p class='event-location'>Location : " + event.location + "</p>\
-        <p class='event-type'>Type : " + event.type + "</p>\
         <p class='event-period'>Period : From " + event.starting + " to " + event.ending + "</p>\
         <p class='event-url'><a href=" + event.url + ">Read more</a></p>\
     </div>");
-} // Append current event in the div 
+}  // Deleted => <p class='event-type'>Type : " + event.type + "</p>\ and used icon instead.
 
 
 });
+
+
+$('.month').each(function(index){
+    var eventsAmount = $(this).children('.event').length;
+    console.log('eventsAmount', eventsAmount);
+    if (eventsAmount == 0) {
+        $(this).append('\
+            <div class="no-event">\
+                <p>No events available for this month.</p>\
+            </div>\
+        ');
+    }
+    else {
+        $(this).append('\
+            <div class="month-link btn-wrapper clear no-push">\
+                <a href="#" class="button button--rounded button--light col bold">View all</a>\
+            </div>\
+        ');
+    }
+});
+
