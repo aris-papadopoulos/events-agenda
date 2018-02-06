@@ -5,6 +5,7 @@ var getJSON = {
             "title":"40th Marathon of Athens starting from Kalimarmano",
             "type":"sports",
             "location":"Athens",
+            "url":"/events/40th-marathon-of-athens",
             "img_src":"./images/marathon.jpg",
             "starting":"2018-3-25",
             "ending":"2018-3-26"
@@ -14,6 +15,7 @@ var getJSON = {
             "title":"Dine Athens Restaurant Week",
             "type":"gastronomy",
             "location":"Athens",
+            "url":"/events/dine-athens-restaurant-week",
             "img_src":"./images/gastronomy.jpg",
             "starting":"2018-5-13",
             "ending":"2018-5-14"
@@ -23,6 +25,7 @@ var getJSON = {
             "title":"1st Short Film Festival of the Municipality of Peristeri",
             "type":"arts",
             "location":"Athens",
+            "url":"/events/1st-short-film-festival-peristeri",
             "img_src":"./images/arts.jpg",
             "starting":"2018-7-25",
             "ending":"2018-7-26"
@@ -32,6 +35,7 @@ var getJSON = {
             "title":"The Theatre Of Disappearance - Adrian Villar Rojas",
             "type":"arts",
             "location":"Athens",
+            "url":"/events/the-theatre-of-disappearance",
             "img_src":"./images/arts.jpg",
             "starting":"2018-2-27",
             "ending":"2018-4-19"
@@ -41,6 +45,7 @@ var getJSON = {
             "title":"The Greek Song is still Alive II - Oloi mazi boroume & Dionisis Savvopoulos",
             "type":"concert",
             "location":"Santorini",
+            "url":"/events/the-greek-song-is-still-alive-ii",
             "img_src":"./images/concert.jpg",
             "starting":"2018-3-20",
             "ending":"2018-3-21"
@@ -50,6 +55,7 @@ var getJSON = {
             "title":"Free tours at the National Archaeological Museum",
             "type":"history",
             "location":"Athens",
+            "url":"/events/free-tours-at-the-national-archeological-museum",
             "img_src":"./images/concert.jpg",
             "starting":"2017-11-25",
             "ending":"2017-11-26"
@@ -59,6 +65,7 @@ var getJSON = {
             "title":"EJEKT FESTIVAL",
             "type":"concert",
             "location":"Athens",
+            "url":"/events/ejekt-festival-2018",
             "img_src":"./images/concert.jpg",
             "starting":"2019-1-5",
             "ending":"2019-1-26"
@@ -68,6 +75,7 @@ var getJSON = {
             "title":"Sleepin Pillow at Fuzz Live Music Club",
             "type":"concert",
             "location":"Athens",
+            "url":"/events/sleepin-pillow-fuzz-club",
             "img_src":"./images/concert.jpg",
             "starting":"2018-2-25",
             "ending":"2018-2-26"
@@ -77,6 +85,7 @@ var getJSON = {
             "title":"Comicdom Con Athens 2016 in April",
             "type":"arts",
             "location":"Athens",
+            "url":"/events/comicdom-con-athens-2016",
             "img_src":"./images/concert.jpg",
             "starting":"2018-4-11",
             "ending":"2018-4-12"
@@ -86,6 +95,7 @@ var getJSON = {
             "title":"Christmas festival",
             "type":"tradition",
             "location":"Salonika",
+            "url":"/events/christmas-festival",
             "img_src":"./images/concert.jpg",
             "starting":"2018-12-24",
             "ending":"2019-1-4"
@@ -95,6 +105,7 @@ var getJSON = {
             "title":"Summer Holiday",
             "type":"excursion",
             "location":"Cyclades",
+            "url":"/events/summer-holiday",
             "img_src":"./images/concert.jpg",
             "starting":"2018-7-24",
             "ending":"2018-8-12"
