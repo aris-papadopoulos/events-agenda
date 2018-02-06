@@ -30,6 +30,7 @@ for (i=0; i<11; i++) {
     months_array.push(months[mm] + ' ' + yy + ' ' + (mm+1) + ' ' + monthsShort[mm]);
 }
 
+// Appending HTML, with classes according to initial state.
 months_array.forEach(function(el, index) {
 var split_el = el.split(" ");
 var dateText = "<span class='fullMonth'>" + split_el[0] + "</span>" + "<span class='shortMonth'>" + split_el[3] + "</span>" + "<br>" + split_el[1];
@@ -54,7 +55,6 @@ else {
 }
 // Class "show" refers to whether the div is shown on tablets and up, class "active" refers to active month on mobile version
 
-// Appending HTML, with classes according to initial state.
 });
 
 
@@ -68,6 +68,7 @@ var documentWidth = window.innerWidth;
 /* Old method: Individual month divs are calculated first, then we multiply their width by 17 (total months). 
     This method turned out to be less effective cause browsers render divisions of pixel in a different way (read about subpixel rendering),
     causing a loss of +-2 pixels in some cases */
+
 if (documentWidth > 600) {
     $('#app').outerWidth(agenda_w * 1.4166666);
 }  
@@ -83,20 +84,21 @@ $('.agenda-btn').on('click', function(e) {
     $(this).addClass("inactive");
 
     if ($(this).hasClass('btn-right')) {
-        $('.agenda-btn.btn-left').removeClass('inactive');
-        $('#app').addClass('scrolled');
+        $('.agenda-btn.btn-left').removeClass('inactive');  // Arrow Class
+        $('#app').addClass('scrolled');                     // Month Wrapper Class
         toggleActiveDivs();
         toggleSecondHalfDivs();
     }
     else {
-        $('.agenda-btn.btn-right').removeClass('inactive');
-        $('#app').removeClass('scrolled');
+        $('.agenda-btn.btn-right').removeClass('inactive'); // Arrow Class
+        $('#app').removeClass('scrolled');                  // Month Wrapper Class
         toggleActiveDivs();
         setTimeout(() => {
         toggleSecondHalfDivs();
         }, 50);
     }
 
+    // Months shown when scrolling. Used with :hover to show events that are only shown at the moment.
     function toggleActiveDivs() {
         $('.month').each(function(index, el) {
         if (index < 5) {
@@ -107,6 +109,8 @@ $('.agenda-btn').on('click', function(e) {
         }
         });
     }
+    
+    // Used to find first 6 and last 6 months in order to float the events accordingly. (nth-child doesn't work when classes are changing).
     function toggleSecondHalfDivs() {
         $('.month.show').each(function(index, el) {
         if (index <= 5) {
@@ -125,7 +129,7 @@ $('#agenda-dropdown li').on('click', function(e) {
 
     e.preventDefault();
 
-    $('#agenda-dropdown, #agenda-dropdown li').removeClass('active');
+    $('#agenda-dropdown li').removeClass('active');
     $(this).addClass('active');
     var selectedMonth = $(this).data('month');
     var selectedYear = $(this).data('year');
@@ -135,49 +139,49 @@ $('#agenda-dropdown li').on('click', function(e) {
 
 });
 
-$('.dropdown-button.btn').on('click', function(){
-    $('#agenda-dropdown').toggleClass('active');
-});
 
+    
 
 getJSON.events.forEach(function(event){
 
-    // console.log('EVENT: ' + event.id + event.title + event.type + event.location + event.starting + event.ending);
+// console.log('EVENT: ' + event.id + event.title + event.type + event.location + event.starting + event.ending);
 
-    var eventStarting = event.starting.split('-');
-    var eventEnding = event.ending.split('-');
+var eventStarting = event.starting.split('-');
+var eventEnding = event.ending.split('-');
 
-    var startingMonth = eventStarting[1];
-    var endingMonth = eventEnding[1];
+var startingMonth = eventStarting[1];
+var endingMonth = eventEnding[1];
 
-    var startingYear = eventStarting[0];
-    var endingYear = eventEnding[0];
+var startingYear = eventStarting[0];
+var endingYear = eventEnding[0];
 
-    eventMonths = [parseInt(startingMonth)];
-    eventYears = [parseInt(startingYear)];
+eventMonths = [parseInt(startingMonth)];
+eventYears = [parseInt(startingYear)];
 
-    while (startingMonth != endingMonth) {
-        startingMonth++;
-        if (startingMonth > 12) {
-        startingMonth = 1;
-        startingYear++;
-        }
-        eventMonths.push(parseInt(startingMonth));
-        eventYears.push(parseInt(startingYear));
-    } // If event lasts more than a month, create arrays that show which month and year the event take place in 
-    // console.log('eventMonths', eventMonths);
-    // console.log('eventYears', eventYears);
+// If event lasts more than a month, create arrays that show which month and year the event take place in 
+while (startingMonth != endingMonth) {
+    startingMonth++;
+    if (startingMonth > 12) {
+    startingMonth = 1;
+    startingYear++;
+    }
+    eventMonths.push(parseInt(startingMonth));
+    eventYears.push(parseInt(startingYear));
+} 
+// console.log('eventMonths', eventMonths);
+// console.log('eventYears', eventYears);
 
-    for (i=0; i<eventMonths.length; i++) {
-        // console.log('eventMonths[i]',eventMonths[i], $('.month[data-month="' + eventMonths[i] + '"]'));
-        $('.month[data-month="' + eventMonths[i] + '"][data-year="' + eventYears[i] + '"]').append("\
-        <div class='event'>\
-            <p class='event-title'>" + event.title + "</p>\
-            <p class='event-location'>Location : " + event.location + "</p>\
-            <p class='event-type'>Type : " + event.type + "</p>\
-            <p class='event-period'>Period : From " + event.starting + " to " + event.ending + "</p>\
-        </div>");
-    } // Append current event in the div 
+for (i=0; i<eventMonths.length; i++) {
+    // console.log('eventMonths[i]',eventMonths[i], $('.month[data-month="' + eventMonths[i] + '"]'));
+    $('.month[data-month="' + eventMonths[i] + '"][data-year="' + eventYears[i] + '"]').append("\
+    <div class='event'>\
+        <p class='event-title'>" + event.title + "</p>\
+        <p class='event-location'>Location : " + event.location + "</p>\
+        <p class='event-type'>Type : " + event.type + "</p>\
+        <p class='event-period'>Period : From " + event.starting + " to " + event.ending + "</p>\
+        <p class='event-url'><a href=" + event.url + ">Read more</a></p>\
+    </div>");
+} // Append current event in the div 
 
 
 });

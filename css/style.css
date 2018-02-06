@@ -45,10 +45,10 @@ html {
 *, *:before, *:after {
   box-sizing: inherit; }
 
-ul:not(.browser-default) {
+ul {
   padding-left: 0;
   list-style-type: none; }
-  ul:not(.browser-default) > li {
+  ul > li {
     list-style-type: none; }
 
 a {
@@ -60,7 +60,7 @@ a {
 /*********************
   Media Query Classes
 **********************/
-@media only screen and (max-width: 600px) {
+/* @media only screen and (max-width: 600px) {
   .hide-on-small-only, .hide-on-small-and-down {
     display: none !important; } }
 
@@ -102,7 +102,7 @@ a {
 
 @media only screen and (max-width: 600px) {
   .center-on-small-only {
-    text-align: center; } }
+    text-align: center; } } */
 
 
 
@@ -118,8 +118,6 @@ a {
     float: left;
     box-sizing: border-box;
     min-height: 1px; }
-    .row .col[class*="push-"], .row .col[class*="pull-"] {
-      position: relative; }
     .row .col.s1 {
       width: 8.33333%;
       margin-left: auto;
@@ -358,16 +356,6 @@ body {
   font-size: 0.75em;
   transition: color .4s; 
 }
-@media only screen and (min-width: 993px) {
-  .agenda .month-wrapper .month .shortMonth {
-    display: none; 
-  } 
-}
-@media only screen and (min-width: 601px) and (max-width: 992px) {
-  .agenda .month-wrapper .month .fullMonth {
-    display: none; 
-  } 
-}
 #agenda .month-wrapper .month .event {
   font-size: .8em;
   width: 300px;
@@ -381,7 +369,7 @@ body {
 }
 #agenda .month-wrapper .month .event {
   display: none;
-  background: rgba(0, 0, 32, 0.9);
+  background: rgba(0, 0, 32, 0.8);
   margin-bottom: 10px; 
 }
 #agenda .month-wrapper .month .event p {
@@ -499,17 +487,13 @@ border-radius: 50%;
   #agenda .month-wrapper {
     width: 100% !important; 
   }
-  #agenda .month-wrapper .month {
-    display: none;
-    transform: translateX(600px);
-    transition: transform 1.5s;
-  }
-  #agenda .month-wrapper .month.show {
+  #agenda .month-wrapper .month.active {
     display: block;
     transform: translateX(0);
   }
-  #agenda .month-wrapper .month p {
+  #agenda .month-wrapper .month .dateText {
     font-size: 1.25em; 
+    text-align: center;
   }
   #agenda .month-wrapper .month .shortMonth {
     display: none; 
@@ -518,21 +502,21 @@ border-radius: 50%;
     margin: 10px auto;
     display: block; 
   }
-  #agenda .month-wrapper .month.active {
-      display: block;
-  }
   #agenda .month-wrapper .month {
     display: none;
   }
 }
 
 @media only screen and (min-width: 601px) {
+  .hide-on-med-and-up {
+    display: none !important; 
+  }
   #agenda .month-wrapper .month {
     width: 5.882352%; 
   }
   #agenda .month-wrapper .month.show:hover {
     background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.67) 2%, rgba(0, 0, 0, 0.46) 98%, rgba(0, 0, 0, 0.46) 100%);
-    cursor: pointer; 
+    cursor: default; 
   }
   #agenda .month-wrapper .month.show:hover .dateText {
     color: #03a9f4; 
@@ -551,6 +535,7 @@ border-radius: 50%;
     padding: 2.5rem;
   }
 }
+
 @media only screen and (min-width: 601px) and (max-width: 992px) {
   #agenda .month-wrapper .month .fullMonth {
     display: none; 
