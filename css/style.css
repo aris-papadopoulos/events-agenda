@@ -111,8 +111,7 @@ a {
 
 .row {
   margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 20px; }
+  margin-right: auto; }
   .row:after {
     content: "";
     display: table;
@@ -463,7 +462,7 @@ border-radius: 50%;
   font-size: 1.4rem;
 }
 #agenda .dropdown-wrapper {
-  margin: 40px auto;
+  margin: 40px auto 20px;
   width: 240px;
 }
 #agenda-dropdown {
@@ -516,6 +515,9 @@ border-radius: 50%;
 #agenda .month-wrapper .month .button--rounded {
   padding: 0.25rem 0.9375rem;
 }
+.month > div.event:nth-of-type(n+5) {
+  display: none!important; 
+} /* hide events if more than 4 */
 
 @media only screen and (max-width: 600px) {
   .hide-on-small-only {

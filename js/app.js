@@ -142,6 +142,14 @@ $('#agenda-dropdown li').on('click', function(e) {
 $('.dropdown-button.btn').on('click', function(){
     $('#agenda-dropdown').toggleClass('active');
 });
+
+$('body').on('click', function(e){
+    var target = e.target;
+    console.log('e.target',target);
+    if (! ($(target).hasClass('dropdown-button')) || ($(target).is('#agenda-dropdown li')) ) {
+        $('#agenda-dropdown').removeClass('active');
+    }
+});
     
 
 getJSON.events.forEach(function(event){
