@@ -568,11 +568,11 @@ border-radius: 50%;
   #agenda .month-wrapper .month.show:hover .dateText {
     color: #03a9f4; 
   }
-  #agenda .month-wrapper .month:not(:last-of-type) {
+  .month:not(:last-of-type) {
     border-right: 2px dashed;
     border-right-color: rgba(255, 255, 255, 0.35); 
   }
-  #agenda .month-wrapper .month.second-half .event, #agenda .month-wrapper .month.second-half .month-link {
+  .month.second-half .event, .month.second-half .no-event, .month.second-half .month-link {
     float: right; 
   }
   #agenda .month-wrapper .month.show:hover .dateText {
